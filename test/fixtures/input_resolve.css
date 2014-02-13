@@ -1,0 +1,6 @@
+@import "inner/input_inline_import_resolve.css";
+@import "../fixtures/inner/input_inline_import_resolve.css";
+@import "../input_external.css";
+.a {
+  background: url(../images/a.gif);
+}
