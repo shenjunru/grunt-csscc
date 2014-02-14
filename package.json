@@ -2,7 +2,7 @@
   "name": "grunt-csscc",
   "description": "Combine & Compress CSS files.",
   "homepage": "https://github.com/shenjunru/grunt-csscc",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": {
     "name": "Shen Junru",
     "email": "shenjunru@gmail.com"
@@ -27,7 +27,7 @@
     "test": "grunt test"
   },
   "dependencies": {
-    "clean-css": "~2.0.0"
+    "clean-css": "~2.1.0"
   },
   "devDependencies": {
     "grunt": "~0.4.1",

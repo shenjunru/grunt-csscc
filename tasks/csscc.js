@@ -9,14 +9,31 @@
 'use strict';
 
 module.exports = function(grunt) {
-    var CleanCSS = require('clean-css/lib/clean');
+    var CleanCSS = require('clean-css');
     var path = require('path');
 
     function compress(source, options){
         try {
-            var css = new CleanCSS(options);
-            css.lineBreak = options.lineBreak;
-            return css.minify(grunt.file.read(source));
+            var cc = new CleanCSS(options);
+            cc.lineBreak = options.lineBreak;
+
+            var result = cc.minify(grunt.file.read(source));
+
+            if (options.debug) {
+                grunt.log.writeln('Original: %d bytes', cc.stats.originalSize);
+                grunt.log.writeln('Minified: %d bytes', cc.stats.minifiedSize);
+                grunt.log.writeln('Efficiency: %d%', ~~(cc.stats.efficiency * 10000) / 100.0);
+                grunt.log.writeln('Time spent: %dms', cc.stats.timeSpent);
+            }
+
+            cc.errors.forEach(function(message) {
+                grunt.log.error(message);
+            });
+            cc.warnings.forEach(function(message) {
+                grunt.fail.warn(message);
+            });
+
+            return result;
         } catch (e) {
             grunt.log.error(e);
             grunt.fail.warn('css minification failed.');
@@ -26,11 +43,12 @@ module.exports = function(grunt) {
 
     grunt.registerMultiTask('csscc', 'Combine & Compress CSS files', function(){
         var options = this.options({
-            selectorsMergeMode:  '*',
+            compatibility:       '*',
             keepSpecialComments: 0,
             processImport:       true,
             keepBreaks:          false,
             noAdvanced:          false,
+            debug:               false,
             lineBreak:           '\n',
             banner:              '',
             root:                ''

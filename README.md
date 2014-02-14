@@ -1,4 +1,11 @@
-# grunt-csscc v0.1.0
+[![NPM version](https://badge.fury.io/js/grunt-csscc.png)](https://badge.fury.io/js/grunt-csscc)
+[![Build Status](https://secure.travis-ci.org/shenjunru/grunt-csscc.png)](https://travis-ci.org/shenjunru/grunt-csscc)
+[![Dependency Status](https://david-dm.org/shenjunru/grunt-csscc.png?theme=shields.io)](https://david-dm.org/shenjunru/grunt-csscc)
+[![devDependency Status](https://david-dm.org/shenjunru/grunt-csscc/dev-status.png?theme=shields.io)](https://david-dm.org/shenjunru/grunt-csscc#info=devDependencies)
+
+
+
+# grunt-csscc v0.1.1
 
 > Combine & Compress CSS files.
 
@@ -7,7 +14,11 @@
 ## Getting Started
 This plugin requires Grunt `~0.4.1`
 
-If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
+If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out
+the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains
+how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as
+install and use Grunt plugins. Once you're familiar with that process, you may
+install this plugin with this command:
 
 ```shell
 npm install grunt-csscc --save-dev
@@ -32,7 +43,7 @@ Files are compressed with [clean-css](https://github.com/GoalSmashers/clean-css)
 ## Options
 
 * `banner` - header of the compressed source, with a line break in between.
-* `selectorsMergeMode` - `ie8` for IE8 compatibility mode, `*` for merging all (default)
+* `compatibility` - `ie8` for IE8 compatibility mode, `*` for merging all (default)
 * `keepSpecialComments` - `0` for removing all (default), `1` for keeping first one only, `*` for keeping all
 * `keepBreaks` - whether to keep line breaks (default is false)
 * `processImport` - whether to process `@import` rules
@@ -40,6 +51,7 @@ Files are compressed with [clean-css](https://github.com/GoalSmashers/clean-css)
 * `noRebase` - whether to skip URLs rebasing (default is false)
 * `root` - path to resolve absolute `@import` rules and rebase relative URLs
 * `lineBreak` - line break (default is '\n')
+* `debug` - set to true to get minification statistics under `stats` property
 
 ## Usage Example
 
@@ -59,4 +71,5 @@ csscc: {
 
 ## Release History
 
+ * 2014-02-14   v0.1.1   use clean-css 2.1.0.
  * 2014-02-13   v0.1.0   first stable version.

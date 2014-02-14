@@ -80,6 +80,14 @@ module.exports = function(grunt) {
                         'test/fixtures/input_resolve.css'
                     ]
                 }
+            },
+
+            clean_css_import: {
+                files: {
+                    'tmp/clean_css_import.css': [
+                        'test/fixtures/clean_css_import/test.css'
+                    ]
+                }
             }
         },
 
